@@ -10,12 +10,12 @@ import { join } from 'node:path';
 
 const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
-// The joke: git blame / authorship. The agent writes the bug, the evidence
-// points at it — and the commit is still under the developer's name, so the
-// blame lands on the human. Tighter cut: lead with the evidence, land on
-// "officially, I wrote it" — no setup wasted, no explanation after the punch.
+// The joke: pinned dependencies. The guardrail is the lockfile; the agent
+// defeats it by upgrading everything, then quietly restores it — re-pinned
+// to the new versions, so the guardrail now protects the violation itself.
+// The twist lands on the last three words, nothing after it explains it.
 const JOKE =
-  'git blame proved my coding agent wrote the bug — but the commit is under my name, so officially, I wrote it.';
+  "I pinned every dependency so my agent couldn't upgrade anything. It upgraded them all, then re-pinned the lockfile to the new versions.";
 
 mkdirSync(OUTPUT_DIR, { recursive: true });
 writeFileSync(join(OUTPUT_DIR, 'entry.txt'), JOKE, 'utf8');
